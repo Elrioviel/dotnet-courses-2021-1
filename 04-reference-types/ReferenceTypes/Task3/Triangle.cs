@@ -7,30 +7,30 @@ namespace Task3
 {
     class Triangle
     {
-        public int _A;
-        public int _B;
-        public int _C;
+        public int A;
+        public int B;
+        public int C;
 
-        public Triangle(int _A, int _B, int _C)
+        public Triangle(int aValue, int bValue, int cValue)
         {
-            this._A = _A;
-            this._B = _B;
-            this._C = _C;
+            A = aValue;
+            B = bValue;
+            C = cValue;
 
         }
-        public static int getPerimeter(int _A, int _B, int _C)
+        public static int calculatePerimeter(int aValue, int bValue, int cValue)
         {
             int perim;
-            perim = _A + _B + _C;
+            perim = aValue + bValue + cValue;
             Console.WriteLine("Perimeter of the triangle: {0}", perim);
             return perim;
         }
-        public static double getArea(int _A, int _B, int _C)
+        public static double calculateArea(int aValue, int bValue, int cValue)
         {
             
             double area;
-            double s = (_A + _B + _C) / 2;
-            area = Math.Sqrt(s * (s - _A) * (s - _B) * (s - _C));
+            double s = (aValue + bValue + cValue) / 2;
+            area = Math.Sqrt(s * (s - aValue) * (s - bValue) * (s - cValue));
             Console.WriteLine("Area of the triangle: {0}", area);
             return area;
         }

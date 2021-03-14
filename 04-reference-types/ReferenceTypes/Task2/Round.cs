@@ -7,27 +7,27 @@ namespace Task2
 {
     class Round
     {
-        public int _xValue;
-        public int _yValue;
-        public int _radius;
+        public int X;
+        public int Y;
+        public int Radius;
         
-        public Round (int _xValue, int _yValue, int _radius)
+        public Round (int xValue, int yValue, int radiusValue)
         {
-            this._xValue = _xValue;
-            this._yValue = _yValue;
-            this._radius = _radius;
+            X= xValue;
+            Y = yValue;
+            Radius = radiusValue;
         }
-        public static double getArea(int _xValue, int _yValue, int _radius)
+        public static double calculateArea(int xValue, int yValue, int radiusValue)
         {
-            double area = Math.PI * _radius * _radius;
+            double area = Math.PI * radiusValue * radiusValue;
             Console.WriteLine("Area: {0}", area);
             return area;
         }
 
-        public static double getPerim(int _xValue, int _yValue, int _radius)
+        public static double calculatePerimeter(int xValue, int yValue, int radiusValue)
         {
 
-            double circumference = 2 * Math.PI * _radius;
+            double circumference = 2 * Math.PI * radiusValue;
             Console.WriteLine("Perimeter: {0}", circumference);
             return circumference;
         }

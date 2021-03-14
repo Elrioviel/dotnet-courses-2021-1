@@ -6,35 +6,17 @@ namespace Task1
 {
     class User
     {
-        private string _birth;
-        private string _last;
-        private string _patronym;
-        private string _first;
-        public string Birth
+        public string birth;
+        public string last;
+        public string patronym;
+        public string first;
+        
+        public User(string birthDate, string lastName, string patronymic, string firstName)
         {
-            get { return _birth; }
-            set { _birth = value;  }
+            this.birth = birthDate;
+            this.last = lastName;
+            this.patronym = patronymic;
+            this.first = firstName;
         }
-
-        public string LastName
-        {
-            get { return _last; }
-            set { _last = value; }
-        }
-        public string FirstName
-        {
-            get { return _first; }
-            set { _first = value; }
-        }
-        public string Patronymic
-        {
-            get { return _patronym; }
-            set { _patronym = value; }
-        }
-        public override int GetHashCode()
-        {
-            return this.FirstName.GetHashCode();
-        }
-
     }
 }
