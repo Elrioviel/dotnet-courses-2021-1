@@ -17,18 +17,15 @@ namespace Task2
             Y = yValue;
             Radius = radiusValue;
         }
-        public static double calculateArea(int xValue, int yValue, int radiusValue)
+        public double CalculateArea()
         {
-            double area = Math.PI * radiusValue * radiusValue;
-            Console.WriteLine("Area: {0}", area);
+            double area = Math.PI * Radius * Radius;
             return area;
         }
 
-        public static double calculatePerimeter(int xValue, int yValue, int radiusValue)
+        public double CalculatePerimeter()
         {
-
-            double circumference = 2 * Math.PI * radiusValue;
-            Console.WriteLine("Perimeter: {0}", circumference);
+            double circumference = 2 * Math.PI * Radius;
             return circumference;
         }
         

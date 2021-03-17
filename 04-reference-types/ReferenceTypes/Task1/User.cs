@@ -6,17 +6,17 @@ namespace Task1
 {
     class User
     {
-        public string birth;
-        public string last;
-        public string patronym;
-        public string first;
+        public string Birth;
+        public string Last;
+        public string Patronym;
+        public string First;
         
-        public User(string birthDate, string lastName, string patronymic, string firstName)
+        public User(string BirthDate, string LastName, string Patronymic, string FirstName)
         {
-            this.birth = birthDate;
-            this.last = lastName;
-            this.patronym = patronymic;
-            this.first = firstName;
+            this.Birth = BirthDate;
+            this.Last = LastName;
+            this.Patronym = Patronymic;
+            this.First = FirstName;
         }
     }
 }

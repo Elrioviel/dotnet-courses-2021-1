@@ -13,21 +13,16 @@ namespace Task2
             Console.WriteLine("X = {0}", round1.X);
             Console.WriteLine("Y = {0}", round1.Y);
             Console.WriteLine("Radius = {0}", round1.Radius);
-            var circumference = Round.CalculatePerimeter(3, 6, 25);
+            var circumference = round1.CalculatePerimeter();
             Console.WriteLine("Perimeter: {0}", circumference);
-            var area = Round.CalculateArea(3, 6, 25);
+            var area = round1.CalculateArea();
             Console.WriteLine("Area: {0}", area);
             Console.WriteLine();
+
             Circle circle1 = new Circle(1, 2, 25, 16);
-            Console.WriteLine("Circle:");
-            Console.WriteLine("X = {0}", circle1.X);
-            Console.WriteLine("Y = {0}", circle1.Y);
-            Console.WriteLine("Radius = {0}", circle1.InnerRadius);
-            var circleCircumference = Circle.CalculateCirclePerimeter(16);
-            Console.WriteLine("Perimeter: {0}", circleCircumference);
-            var circleArea = Circle.CalculateCircleArea(3, 6, 16);
-            Console.WriteLine("Area: {0}", circleArea);
-            var sumCircumference = Circle.CalculateSumCircumferences(circumference, circleCircumference);
+             var diffArea = circle1.CalculateAreaDifferencee();
+            Console.WriteLine("The difference is: {0}", diffArea);
+            var sumCircumference = circle1.CalculateSumCirclePerimeter();
             Console.WriteLine("Sum of inner and outer circumferences: {0}", sumCircumference);
             Console.ReadLine();
         }

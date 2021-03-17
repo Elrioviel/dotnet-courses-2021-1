@@ -16,15 +16,15 @@ namespace Task2
             Y = yValue;
             Radius = radiusValue;
         }
-        public static double CalculateArea(int xValue, int yValue, int radiusValue)
+        public double CalculateArea()
         {
-            double area = Math.PI * radiusValue * radiusValue;
+            double area = Math.PI *Radius*Radius;
             return area;
         }
 
-        public static double CalculatePerimeter(int xValue, int yValue, int radiusValue)
+        public  double CalculatePerimeter()
         {
-            double circumference = 2 * Math.PI * radiusValue;
+            double circumference = 2 * Math.PI * Radius;
             return circumference;
         }
     }

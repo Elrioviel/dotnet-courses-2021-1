@@ -16,8 +16,11 @@ namespace Task3
                 int cValue = Convert.ToInt32(Console.ReadLine());
 
                 Triangle t1 = new Triangle(aValue,bValue,cValue);
-                Triangle.calculatePerimeter(aValue, bValue, cValue);
-                Triangle.calculateArea(aValue, bValue, cValue);
+                var perim = t1.CalculatePerimeter();
+                Console.WriteLine("Perimeter of the triangle: {0}", perim);
+                var area = t1.CalculateArea();
+                Console.WriteLine("Area of the triangle: {0}", area);
+
             }
             catch
             {

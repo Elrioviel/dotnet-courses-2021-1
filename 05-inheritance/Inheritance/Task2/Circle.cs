@@ -4,47 +4,31 @@ using System.Text;
 
 namespace Task2
 {
-    class Circle : Round
+    class Circle 
     {
-        private int _innerRadius;
-        public int InnerRadius
-        {
-            get
-            {
-                return _innerRadius;
-            }
-            set
-            {
-                _innerRadius = value;
-            }
-        }
+        private Round innerround;// _innerRadius;
+        private Round outerround;
 
-        public Circle(int xValue, int yValue, int radiusValue, int InnerRadius) : base(xValue, yValue, radiusValue)
+        public Circle(int xValue, int yValue, int radiusValue, int InnerRadius)
         {
             if ((InnerRadius > radiusValue) || (InnerRadius < 0))
             {
                 throw new ArgumentException("Radius must be greater than the inner radius!");
             }
-            this.InnerRadius = InnerRadius;
+            this.innerround = new Round (xValue, yValue, InnerRadius);
+            this.outerround = new Round(xValue, yValue, radiusValue);
         }
-        public static double CalculateCircleArea(int xValue, int yValue, int InnerRadius)
+        public double CalculateAreaDifferencee()
         {
-            double circleArea = Math.PI * InnerRadius * InnerRadius;
-            return circleArea;
+            return outerround.CalculateArea()- innerround.CalculateArea();
         }
 
-        public static double CalculateCirclePerimeter(int InnerRadius)
+        public double CalculateSumCirclePerimeter()
         {
-
-            double circleCircumference = 2 * Math.PI * InnerRadius;
-            return circleCircumference;
+            return innerround.CalculatePerimeter() + outerround.CalculatePerimeter();
         }
 
-        public static double CalculateSumCircumferences(double circumference, double circleCircumference)
-        {
-            double sumOfCircumferences = circumference + circleCircumference;
-            return sumOfCircumferences;
-        }
+        
 
     }
 }

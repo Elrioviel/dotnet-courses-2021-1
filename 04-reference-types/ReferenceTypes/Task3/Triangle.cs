@@ -18,20 +18,18 @@ namespace Task3
             C = cValue;
 
         }
-        public static int calculatePerimeter(int aValue, int bValue, int cValue)
+        public int CalculatePerimeter()
         {
             int perim;
-            perim = aValue + bValue + cValue;
-            Console.WriteLine("Perimeter of the triangle: {0}", perim);
+            perim = A + B + C;
+            
             return perim;
         }
-        public static double calculateArea(int aValue, int bValue, int cValue)
+        public double CalculateArea()
         {
-            
             double area;
-            double s = (aValue + bValue + cValue) / 2;
-            area = Math.Sqrt(s * (s - aValue) * (s - bValue) * (s - cValue));
-            Console.WriteLine("Area of the triangle: {0}", area);
+            double s = (A + B + C) / 2;
+            area = Math.Sqrt(s * (s - A) * (s - B) * (s - C));
             return area;
         }
     }

@@ -12,8 +12,10 @@ class Program
                 Console.WriteLine("X = {0}", r1.X);
                 Console.WriteLine("Y = {0}", r1.Y);
                 Console.WriteLine("Radius = {0}", r1.Radius);
-                Round.calculatePerimeter(3, 6, 25);
-                Round.calculateArea(3, 6, 25);
+                var circumference = r1.CalculatePerimeter();
+                Console.WriteLine("Perimeter: {0}", circumference);
+                var area = r1.CalculateArea();
+                Console.WriteLine("Area: {0}", area);
 
             }
             catch

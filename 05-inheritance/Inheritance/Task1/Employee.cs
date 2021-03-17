@@ -14,11 +14,10 @@ namespace Task1
             {
                 get
                 {
-                    return _experience;
+                    return  (DateTime.Now.Year - StartWorking.Year);
                 }
-                set
+                private set
                 {
-                    _experience = value;
                 }
             }
             
@@ -42,10 +41,7 @@ namespace Task1
                 {
                     throw new ArgumentException("Invalid date(s)!");
                 }
-                else
-                {
-                    Experience = (DateTime.Now.Year - StartWorking.Year);
-            }
+                
 
             }
         
