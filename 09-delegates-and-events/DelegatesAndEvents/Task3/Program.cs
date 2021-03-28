@@ -9,20 +9,26 @@ namespace Task3
 {
     class Program
     {
-        static async void SortAsync(string [] myStringToSort, SortingModule.MyDelegate d1)
+
+        static Thread SortAsync(string [] myStringToSort, SortingModule.MyDelegate d1)
         {
-            Console.WriteLine("sorting method started");
-            await Task.Run(() => SortingModule.Sort(myStringToSort, d1));
-            Console.WriteLine("\nsorting method finished");
+            Thread t = new Thread(() => { SortingModule.Sort(myStringToSort, d1); });
+            t.Start();
+            return t;
         }
+        
         static void Main(string[] args)
         {
-            
+            SortingModule.Notify += Notify_Task_Complete;
             string[] myStringToSort = new string[] { "hiiii", "hii", "hiii", "abc", "hi" };
             SortingModule.MyDelegate d1 = new SortingModule.MyDelegate(SortingModule.CompareStrings);
             SortAsync(myStringToSort,d1);
-            Console.Read();
+            
         }
 
+        private static void Notify_Task_Complete(string message)
+        {
+            Console.WriteLine(message);
+        }
     }
 }

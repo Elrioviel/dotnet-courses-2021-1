@@ -37,6 +37,7 @@ namespace Task2
                     {
                         person.Greeting(this);
                     };
+                    Leave += (sender, args) => { person.Parting(this); };
                 }
                 Console.WriteLine("{0} came to work!", Name);
                 Came?.Invoke(this, new OfficeEventArgs());
@@ -46,12 +47,18 @@ namespace Task2
             public void ToLeave()
             {
                 office.Remove(this);
-                foreach (var person in office)
-                {
-                    Leave += (sender, args) => { person.Parting(this); };
-                }
+
                 Console.WriteLine("{0} left the office!", Name);
                 Leave?.Invoke(this, new EventArgs());
+
+                foreach (var person in office)
+                {
+                    Came -= (sender, args) =>
+                    {
+                        person.Greeting(this);
+                    };
+                    Leave -= (sender, args) => { person.Parting(this); };
+                }
             }
         }
         public delegate void OfficeEventHandler(object sender, OfficeEventArgs args);

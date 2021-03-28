@@ -23,14 +23,14 @@ namespace Task1
             return compared;
         }
         public delegate int MyDelegate(string firstString, string secondString);
-        public static void Sort(string[] stringToSort, Delegate MyDelegate)
+        public static void Sort(string[] stringToSort, MyDelegate MyDelegate)
         {
-            MyDelegate d1 = new MyDelegate (CompareStrings);
+            //MyDelegate d1 = new MyDelegate (CompareStrings);
             for (var i = 0; i < stringToSort.Length -1; i++)
             {
                 for (var j = i + 1; j < stringToSort.Length; j++)
                 {
-                    int biggerOrSmaller = d1(stringToSort[i], stringToSort[j]);
+                    int biggerOrSmaller = MyDelegate(stringToSort[i], stringToSort[j]);
                     if (biggerOrSmaller == 1)
                     {
                         string temp = stringToSort[i];

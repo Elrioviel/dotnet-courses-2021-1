@@ -10,7 +10,9 @@ namespace Task3
     
     class SortingModule
     {
-
+        public delegate void TaskHandler(string message);
+        public static event TaskHandler Notify;
+        //public static event EventHandler<string[]> TaskCompleted;
         public static int CompareStrings(string firstString, string secondString)
         {
             int compared;
@@ -30,6 +32,7 @@ namespace Task3
             return compared;
         }
         public delegate int MyDelegate(string firstString, string secondString);
+        
         public static void Sort(string[] stringToSort, Delegate MyDelegate)
         {
             MyDelegate d1 = new MyDelegate(CompareStrings);
@@ -53,9 +56,11 @@ namespace Task3
             {
                 Console.Write("{0} | ", stringToSort[i]);
             }
-            Thread.Sleep(500);
-            
+            Thread.Sleep(300);
+            Notify?.Invoke("Task Completed");
+
         }
+        
 
     }
 }
