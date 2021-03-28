@@ -5,21 +5,30 @@ namespace Task1
 {
     class Program
     {
-        public static void RemoveEachSecondItem(IEnumerable<string> Person)
+        public static void RemoveEachSecondItem(IEnumerable<string> oldPerson)
         {
-            LinkedList<string> Person1 = new LinkedList<string>(Person);
-            var prevItem = Person1.First;
-            var currentItem = prevItem.Next;
-            if (prevItem != null && currentItem != null)
+            List<string> Person1 = new List<string>();
+            List<string> Person = new List<string>(oldPerson);
+            bool isEven = false;
+
+            do
             {
-                var temp = prevItem.Next;
-                temp = currentItem.Next;
-                currentItem = null;
-                prevItem = prevItem.Next;
-                if (prevItem != null)
-                    currentItem = prevItem.Next;
+                Person1 = new List<string>();
+                foreach (string element in Person)
+                {
+                    if (isEven)
+                        Person1.Add(element);
+                    isEven = !isEven;
+                }
+
+
+                Person = new List<string>(Person1);
+               
             }
-            Console.WriteLine(Person1.First.Value);
+            while (Person1.Count > 1);
+
+
+            Console.WriteLine(Person1[0]);
             
         }
         

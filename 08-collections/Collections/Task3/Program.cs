@@ -14,7 +14,7 @@ namespace Task3
         }
         static Dictionary<string,int> CalculateOccurence(string text)
         {
-            Dictionary<string, int> stats = new Dictionary<string, int>();
+            Dictionary<string, int> stats = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
             char[] seperate = { ' ', ',', ';', '.', '?', '!', ':', '-', '[', ']', '(', ')', '}', '{', '\n', '\r' };
             string[] words = text.Split(seperate);
             foreach (string word in words)

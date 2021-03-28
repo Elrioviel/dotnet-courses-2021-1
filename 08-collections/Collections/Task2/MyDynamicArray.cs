@@ -7,12 +7,12 @@ namespace Task2
     public class MyDynamicArray<T> : IEnumerable, IEnumerable<T>
     {
         private T[] myArray;
-        private int size;
-        private int count;
+        private int numberOfElements;
+        private int sizeOfArray;
         public MyDynamicArray()
         {
-            count = 8;
-            this.myArray = new T[count];
+            sizeOfArray = 8;
+            this.myArray = new T[sizeOfArray];
 
         }
        
@@ -26,7 +26,7 @@ namespace Task2
         {
             myArray = new T[(source as ICollection).Count];
             (source as ICollection).CopyTo(myArray, 0);
-            size = myArray.Length;
+            numberOfElements = myArray.Length;
         }
 
         public IEnumerator<T> GetEnumerator()
@@ -52,11 +52,11 @@ namespace Task2
 
         public void Resize(int index)
         {
-            if (count <= index)
+            if (sizeOfArray <= index)
             {
-                count *= 2;
+                sizeOfArray *= 2;
             }
-            T[] doubledArray = new T[count];
+            T[] doubledArray = new T[sizeOfArray];
             for (var i = 0; i < myArray.Length; i++)
             {
                 doubledArray[i] = myArray[i];
@@ -66,22 +66,22 @@ namespace Task2
         public void Add(T obj)
         {
 
-            if (count == size)
+            if (sizeOfArray == numberOfElements)
             {
-                Array.Resize(ref myArray, size * 2);
+                Array.Resize(ref myArray, sizeOfArray * 2);
             }
-            myArray[size] = obj;
-            size++;
+            myArray[numberOfElements] = obj;
+            numberOfElements++;
         }
 
         public void AddRange(T[] elements)
         {
-            if ((size == count) || ((count - size) <= elements.Length))
+            if ((numberOfElements == sizeOfArray) || ((sizeOfArray - numberOfElements) <= elements.Length))
             {
                 Array.Resize<T>(ref myArray, myArray.Length + elements.Length);
 
             }
-            Array.Copy(elements, 0, myArray, count, elements.Length);
+            Array.Copy(elements, 0, myArray, sizeOfArray, elements.Length);
         }
         public T[] Remove(T toDeleteElement)
         {
@@ -91,9 +91,9 @@ namespace Task2
             {
                 throw new IndexOutOfRangeException();
             }
-            size -= 1;
+            numberOfElements -= 1;
             Array.Copy(myArray, 0, myArray, 0, indexToDelete);
-            Array.Copy(myArray, indexToDelete + 1, myArray, indexToDelete, count - indexToDelete - 1);
+            Array.Copy(myArray, indexToDelete + 1, myArray, indexToDelete, sizeOfArray - indexToDelete - 1);
 
             return myArray;
 
@@ -119,20 +119,13 @@ namespace Task2
 
         public int Length()
         {
-            size = 0;
-            for (int i = 0; i < myArray.Length; i++)
-            {
-                if (myArray[i] != null)
-                { size++; }
-
-            }
-            return size;
+            return numberOfElements;
         }
         
         public int Capacity()
         {
-            count = myArray.Length;
-            return count;
+            sizeOfArray = myArray.Length;
+            return sizeOfArray;
         }
 
         public T this[int i]
