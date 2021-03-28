@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace Task2
 {
-    class Employee : User
+    class Employee : User, IEquatable<Employee>
     {
         public string Title;
         private DateTime _startWorking;
@@ -49,5 +50,17 @@ namespace Task2
 
         }
 
+        //public override bool Equals(Employee other)
+        //{
+        //    return Equals(other as Employee);
+        //}
+        public bool Equals(Employee other)
+        {
+            if (this == other) return true;
+            if (other == null) return false;
+            if (FirstName != other.FirstName) return false;
+            if (LastName != other.LastName) return false;
+            return true;
+        }
     }
 }

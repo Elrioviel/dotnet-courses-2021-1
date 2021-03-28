@@ -37,11 +37,7 @@ namespace Task2
 
             Employee employee2 = new Employee("Sarah", "Wilson", "", new DateTime(1989,05,05), "Director", new DateTime (2009,11,12));
             
-            if (employee1.Title.Equals(employee2.Title))
-            {
-                Console.WriteLine("{0} can't be the director! ", employeeName);
-            }
-
+            Console.WriteLine(employee1.Equals(employee2));
         }
     }
 }
