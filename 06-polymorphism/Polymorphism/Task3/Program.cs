@@ -13,25 +13,29 @@ namespace Task3
                 series.MoveNext();
             }
         }
-        public static void PrintIndexable(IIndexableSeries series2, int sequenceLength)
+        public static void PrintIndexable(IIndexable series2, int sequenceLength)
         {
-            series2.Reset();
-            for (int i=0; i < sequenceLength; i++)
+            //series2.();
+            //for (int i=0; i < sequenceLength; i++)
+            //{
+            //    Console.WriteLine(series2.GetCurrent());
+            //    series2.MoveNext();
+            //}
+            for (var i = 0; i < sequenceLength; i++)
             {
-                Console.WriteLine(series2.GetCurrent());
-                series2.MoveNext();
+                Console.WriteLine(series2[i]);
             }
 
         }
         public static void Main(string[] args)
         {
-            ISeries progression = new ArithmeticProgression(2, 3);
+            var progression = new ArithmeticProgression(2, 3);
             Console.WriteLine("Arithmetic progression:");
-            PrintSeries(progression, 5);
+            PrintIndexable(progression, 10);
 
             IIndexableSeries list = new List(new double[] { 1, 3, 5, 7, 9 });
             Console.WriteLine("List:");
-            PrintIndexable(list, 10);
+            PrintIndexable(list, 5);
         }
     }
 }
