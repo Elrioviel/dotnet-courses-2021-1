@@ -1,0 +1,18 @@
+
+C:\Users\Ghalia\Desktop\Study\dotnet-courses-2021-1\11-files\Files\FilesFolder1\New Text Document.txt Created
+C:\Users\Ghalia\Desktop\Study\dotnet-courses-2021-1\11-files\Files\FilesFolder1\New Text Document.txtCreatedNew Text Document.txt
+C:\Users\Ghalia\Desktop\Study\dotnet-courses-2021-1\11-files\Files\FilesFolder1\New Text Document.txt Deleted
+C:\Users\Ghalia\Desktop\Study\dotnet-courses-2021-1\11-files\Files\FilesFolder1\New Text Document.txtCreatedNew Text Document.txt
+C:\Users\Ghalia\Desktop\Study\dotnet-courses-2021-1\11-files\Files\FilesFolder1\New Text Document.txt Deleted
+C:\Users\Ghalia\Desktop\Study\dotnet-courses-2021-1\11-files\Files\FilesFolder1\New Text Document.txtCreatedNew Text Document.txt
+New Text Document.txt renamed to hi.txt
+C:\Users\Ghalia\Desktop\Study\dotnet-courses-2021-1\11-files\Files\FilesFolder1\New Text Document.txtCreatedNew Text Document.txt
+New Text Document.txt renamed to hh.txt
+C:\Users\Ghalia\Desktop\Study\dotnet-courses-2021-1\11-files\Files\FilesFolder1\New Text Document.txtCreatedNew Text Document.txt
+New Text Document.txt renamed to hiiiiii.txt
+C:\Users\Ghalia\Desktop\Study\dotnet-courses-2021-1\11-files\Files\FilesFolder1\New Text Document.txtCreatedNew Text Document.txt
+New Text Document.txt renamed to test.txt
+C:\Users\Ghalia\Desktop\Study\dotnet-courses-2021-1\11-files\Files\FilesFolder1\New Text Document.txtCreatedNew Text Document.txt
+New Text Document.txt renamed to lalala.txt
+C:\Users\Ghalia\Desktop\Study\dotnet-courses-2021-1\11-files\Files\FilesFolder1\New Text Document.txtCreatedNew Text Document.txt
+New Text Document.txt renamed to new test.txt
