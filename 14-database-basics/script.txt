@@ -1,0 +1,61 @@
+USE [database-basics]
+GO
+
+/****** Object:  Table [dbo].[User]    Script Date: 4/28/2021 6:23:42 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[User](
+	[UserID] [int] IDENTITY(1,1) NOT NULL,
+	[FirstName] [nchar](150) NOT NULL,
+	[Surname] [nchar](150) NOT NULL,
+	[BirthDate] [datetime] NOT NULL,
+	[Age]  AS (datediff(year,[BirthDate],getdate()))
+)
+GO
+ALTER TABLE [dbo].[User]
+ADD CONSTRAINT PK_User_UserID PRIMARY KEY CLUSTERED (UserID)
+GO
+
+INSERT INTO [dbo].[User] (FirstName, Surname, BirthDate) VALUES
+('Mike', 'Thomson', '2000-05-19')
+,('Eduard', 'Garcia', '1985-06-11')
+,('James', 'Watson', '1993-07-23')
+,('Mirelle', 'Heydens', '1989-11-12')
+GO
+
+CREATE TABLE Awards(
+	[AwardID] [int] IDENTITY(1,1) NOT NULL,
+	[Title] [nchar](50) NOT NULL,
+	[Description] [nchar](250) NULL
+)
+GO
+
+ALTER TABLE Awards
+ADD CONSTRAINT PK_Award_AwardID PRIMARY KEY CLUSTERED (AwardID)
+GO
+
+ALTER TABLE Awards
+ADD CONSTRAINT DF_AwardTitle_Title_Unique UNIQUE (Title)
+GO
+
+INSERT INTO Awards(Title, Description) VALUES
+('User of the month', 'Best user of the month')
+,('Meh', 'Worst user of the month')
+,('Not bad', 'Try harder next time')
+GO
+
+ALTER TABLE [dbo].[User]
+ADD AwardID int NULL
+GO
+
+ALTER TABLE [dbo].[User]
+WITH CHECK ADD CONSTRAINT Fk_User_UserAward FOREIGN KEY(AwardID)
+REFERENCES Awards (AwardID)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
