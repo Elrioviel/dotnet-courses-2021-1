@@ -62,7 +62,6 @@ namespace WinFormsApp
             this.awardTitletxt.Name = "awardTitletxt";
             this.awardTitletxt.Size = new System.Drawing.Size(261, 27);
             this.awardTitletxt.TabIndex = 2;
-            this.awardTitletxt.Validating += new System.ComponentModel.CancelEventHandler(this.AwardTitletxt_Validating);
             this.awardTitletxt.Validated += new System.EventHandler(this.AwardTitletxt_Validated);
             // 
             // awardsDescriptiontxt
@@ -72,11 +71,11 @@ namespace WinFormsApp
             this.awardsDescriptiontxt.Size = new System.Drawing.Size(261, 27);
             this.awardsDescriptiontxt.TabIndex = 3;
             this.awardsDescriptiontxt.Text = "(optional)";
-            this.awardsDescriptiontxt.Validating += new System.ComponentModel.CancelEventHandler(this.AwardsDescriptiontxt_Validating);
             this.awardsDescriptiontxt.Validated += new System.EventHandler(this.AwardsDescriptiontxt_Validated);
             // 
             // saveAwardbtn
             // 
+            this.saveAwardbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.saveAwardbtn.Location = new System.Drawing.Point(424, 297);
             this.saveAwardbtn.Name = "saveAwardbtn";
             this.saveAwardbtn.Size = new System.Drawing.Size(156, 48);

@@ -6,12 +6,52 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Entities;
+using Department.BLL;
 
 namespace WinFormsApp
 {
     public partial class UserEdit : Form
     {
-        public User editedUser;
+
+
+        #region Variables
+        public UsersBL editedUser;
+        private string _editedfirstName;
+        private string _editedlastName;
+        DateTime _editedbirthDate;
+        private List<string> _usersAward = new List<string>(); 
+
+        public string EditedFirstName
+        {
+            get
+            {
+                return _editedfirstName;
+            }
+        }
+        public string EditedLastName
+        {
+            get
+            {
+                return _editedlastName;
+            }
+        }
+        public DateTime EditedBirthDate
+        {
+            get
+            {
+                return _editedbirthDate;
+            }
+        }
+        public List<string> UsersAward
+        {
+            get
+            {
+                return _usersAward;
+            }
+        }
+        #endregion
+
+
         public UserEdit()
         {
             InitializeComponent();
@@ -22,7 +62,8 @@ namespace WinFormsApp
             editLastNametxt.Text = user.LastName;
             editBirthDatepicker.Value = user.BirthDate;
         }
-        private void UserEdit_Load(object sender, EventArgs e)  //Not sure//
+        
+        private void UserEdit_Load(object sender, EventArgs e)
         {
             var passedAwards = MainForm.awards;
             foreach (Awards award in passedAwards.GetList())
@@ -31,49 +72,37 @@ namespace WinFormsApp
             }
         }
 
-        private void EditFirstNametxt_Validating(object sender, CancelEventArgs e)
-        {
-            string input = editFirstNametxt.Text.Trim();
-            if (String.IsNullOrEmpty(input) == true)
-            {
-                errorProvider.SetError(editFirstNametxt, "Invalid!");
-                e.Cancel = true;
-            }
-            else
-            {
-                errorProvider.SetError(editLastNametxt, String.Empty);
-                e.Cancel = false;
-            }
-        }
-
-        private void EditLastNametxt_Validating(object sender, CancelEventArgs e)
-        {
-            string input = editLastNametxt.Text.Trim();
-            if (String.IsNullOrEmpty(input) == true)
-            {
-                errorProvider.SetError(editLastNametxt, "Invalid!");
-                e.Cancel = true;
-            }
-            else
-            {
-                errorProvider.SetError(editLastNametxt, String.Empty);
-                e.Cancel = false;
-            }
-        }
-
         private void EditFirstNametxt_Validated(object sender, EventArgs e)
         {
-            var editedFirstName = editFirstNametxt.Text.Trim();
+            _editedfirstName = editFirstNametxt.Text.Trim();
         }
 
         private void EditLastNametxt_Validated(object sender, EventArgs e)
         {
-            var editedLastName = editLastNametxt.Text.Trim();
+            _editedlastName = editLastNametxt.Text.Trim();
         }
 
         private void SaveUserbtn_Click(object sender, EventArgs e)
         {
-            
+            if (editFirstNametxt.Text == "" || editLastNametxt.Text == "")
+            {
+                MessageBox.Show("Can't add empty entries");
+            }
+            else
+            {
+                if (awardListCheckbox.CheckedItems.Count != 0)
+                {
+                    foreach (var item in awardListCheckbox.CheckedItems)
+                    {
+                        _usersAward.Add(item.ToString());    
+                    }
+                }
+                _editedfirstName = editFirstNametxt.Text;
+                _editedlastName = editLastNametxt.Text;
+                _editedbirthDate = editBirthDatepicker.Value;
+                this.DialogResult = DialogResult.OK;
+            }
+                
         }
 
     }

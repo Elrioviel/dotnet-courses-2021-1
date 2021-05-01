@@ -35,16 +35,15 @@ namespace WinFormsApp
             this.ctlFileEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.ctlFileRemove = new System.Windows.Forms.ToolStripMenuItem();
             this.ctlFileExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctlAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.ctlTab = new System.Windows.Forms.TabControl();
             this.ctlUsersPage = new System.Windows.Forms.TabPage();
-            this.ctlUsers = new System.Windows.Forms.DataGridView();
-            this.ctlAwardsPage = new System.Windows.Forms.TabPage();
-            this.ctlAwards = new System.Windows.Forms.DataGridView();
-            this.sortAwardsdescbtn = new System.Windows.Forms.Button();
-            this.sortAwardsascbtn = new System.Windows.Forms.Button();
             this.sortUserascbtn = new System.Windows.Forms.Button();
             this.sortUserdescbtn = new System.Windows.Forms.Button();
+            this.ctlUsers = new System.Windows.Forms.DataGridView();
+            this.ctlAwardsPage = new System.Windows.Forms.TabPage();
+            this.sortAwardsascbtn = new System.Windows.Forms.Button();
+            this.sortAwardsdescbtn = new System.Windows.Forms.Button();
+            this.ctlAwards = new System.Windows.Forms.DataGridView();
             this.mainMenu.SuspendLayout();
             this.ctlTab.SuspendLayout();
             this.ctlUsersPage.SuspendLayout();
@@ -57,11 +56,10 @@ namespace WinFormsApp
             // 
             this.mainMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ctlFile,
-            this.ctlAbout});
+            this.ctlFile});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
-            this.mainMenu.Size = new System.Drawing.Size(772, 28);
+            this.mainMenu.Size = new System.Drawing.Size(778, 28);
             this.mainMenu.TabIndex = 0;
             this.mainMenu.Text = "menuStrip1";
             // 
@@ -88,12 +86,14 @@ namespace WinFormsApp
             this.ctlFileEdit.Name = "ctlFileEdit";
             this.ctlFileEdit.Size = new System.Drawing.Size(146, 26);
             this.ctlFileEdit.Text = "Edit";
+            this.ctlFileEdit.Click += new System.EventHandler(this.FileEdit_Click);
             // 
             // ctlFileRemove
             // 
             this.ctlFileRemove.Name = "ctlFileRemove";
             this.ctlFileRemove.Size = new System.Drawing.Size(146, 26);
             this.ctlFileRemove.Text = "Remove";
+            this.ctlFileRemove.Click += new System.EventHandler(this.FileRemove_Click);
             // 
             // ctlFileExit
             // 
@@ -102,14 +102,11 @@ namespace WinFormsApp
             this.ctlFileExit.Text = "Exit";
             this.ctlFileExit.Click += new System.EventHandler(this.FileExit_Click);
             // 
-            // ctlAbout
-            // 
-            this.ctlAbout.Name = "ctlAbout";
-            this.ctlAbout.Size = new System.Drawing.Size(64, 24);
-            this.ctlAbout.Text = "About";
-            // 
             // ctlTab
             // 
+            this.ctlTab.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ctlTab.Controls.Add(this.ctlUsersPage);
             this.ctlTab.Controls.Add(this.ctlAwardsPage);
             this.ctlTab.Location = new System.Drawing.Point(12, 31);
@@ -131,15 +128,44 @@ namespace WinFormsApp
             this.ctlUsersPage.Text = "Users";
             this.ctlUsersPage.UseVisualStyleBackColor = true;
             // 
+            // sortUserascbtn
+            // 
+            this.sortUserascbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.sortUserascbtn.Location = new System.Drawing.Point(462, 292);
+            this.sortUserascbtn.Name = "sortUserascbtn";
+            this.sortUserascbtn.Size = new System.Drawing.Size(123, 33);
+            this.sortUserascbtn.TabIndex = 4;
+            this.sortUserascbtn.Text = "Sort: Asc";
+            this.sortUserascbtn.UseVisualStyleBackColor = true;
+            this.sortUserascbtn.Click += new System.EventHandler(this.SortUserascbtn_Click);
+            // 
+            // sortUserdescbtn
+            // 
+            this.sortUserdescbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.sortUserdescbtn.Location = new System.Drawing.Point(600, 292);
+            this.sortUserdescbtn.Name = "sortUserdescbtn";
+            this.sortUserdescbtn.Size = new System.Drawing.Size(120, 33);
+            this.sortUserdescbtn.TabIndex = 3;
+            this.sortUserdescbtn.Text = "Sort: Desc";
+            this.sortUserdescbtn.UseVisualStyleBackColor = true;
+            this.sortUserdescbtn.Click += new System.EventHandler(this.SortUserdescbtn_Click);
+            // 
             // ctlUsers
             // 
+            this.ctlUsers.AllowUserToAddRows = false;
+            this.ctlUsers.AllowUserToDeleteRows = false;
+            this.ctlUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ctlUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ctlUsers.Location = new System.Drawing.Point(3, 3);
             this.ctlUsers.Name = "ctlUsers";
+            this.ctlUsers.ReadOnly = true;
             this.ctlUsers.RowHeadersWidth = 51;
             this.ctlUsers.RowTemplate.Height = 29;
             this.ctlUsers.Size = new System.Drawing.Size(734, 272);
             this.ctlUsers.TabIndex = 0;
+            this.ctlUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ctlUsers_CellContentClick);
             // 
             // ctlAwardsPage
             // 
@@ -154,57 +180,49 @@ namespace WinFormsApp
             this.ctlAwardsPage.Text = "Awards";
             this.ctlAwardsPage.UseVisualStyleBackColor = true;
             // 
-            // ctlAwards
-            // 
-            this.ctlAwards.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ctlAwards.Location = new System.Drawing.Point(3, 3);
-            this.ctlAwards.Name = "ctlAwards";
-            this.ctlAwards.RowHeadersWidth = 51;
-            this.ctlAwards.RowTemplate.Height = 29;
-            this.ctlAwards.Size = new System.Drawing.Size(734, 277);
-            this.ctlAwards.TabIndex = 0;
-            // 
-            // sortAwardsdescbtn
-            // 
-            this.sortAwardsdescbtn.Location = new System.Drawing.Point(601, 297);
-            this.sortAwardsdescbtn.Name = "sortAwardsdescbtn";
-            this.sortAwardsdescbtn.Size = new System.Drawing.Size(120, 33);
-            this.sortAwardsdescbtn.TabIndex = 1;
-            this.sortAwardsdescbtn.Text = "Sort: Desc";
-            this.sortAwardsdescbtn.UseVisualStyleBackColor = true;
-            // 
             // sortAwardsascbtn
             // 
+            this.sortAwardsascbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.sortAwardsascbtn.Location = new System.Drawing.Point(463, 297);
             this.sortAwardsascbtn.Name = "sortAwardsascbtn";
             this.sortAwardsascbtn.Size = new System.Drawing.Size(123, 33);
             this.sortAwardsascbtn.TabIndex = 2;
             this.sortAwardsascbtn.Text = "Sort: Asc";
             this.sortAwardsascbtn.UseVisualStyleBackColor = true;
+            this.sortAwardsascbtn.Click += new System.EventHandler(this.SortAwardsascbtn_Click);
             // 
-            // sortUserascbtn
+            // sortAwardsdescbtn
             // 
-            this.sortUserascbtn.Location = new System.Drawing.Point(462, 292);
-            this.sortUserascbtn.Name = "sortUserascbtn";
-            this.sortUserascbtn.Size = new System.Drawing.Size(123, 33);
-            this.sortUserascbtn.TabIndex = 4;
-            this.sortUserascbtn.Text = "Sort: Asc";
-            this.sortUserascbtn.UseVisualStyleBackColor = true;
+            this.sortAwardsdescbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.sortAwardsdescbtn.Location = new System.Drawing.Point(601, 297);
+            this.sortAwardsdescbtn.Name = "sortAwardsdescbtn";
+            this.sortAwardsdescbtn.Size = new System.Drawing.Size(120, 33);
+            this.sortAwardsdescbtn.TabIndex = 1;
+            this.sortAwardsdescbtn.Text = "Sort: Desc";
+            this.sortAwardsdescbtn.UseVisualStyleBackColor = true;
+            this.sortAwardsdescbtn.Click += new System.EventHandler(this.SortAwardsdescbtn_Click);
             // 
-            // sortUserdescbtn
+            // ctlAwards
             // 
-            this.sortUserdescbtn.Location = new System.Drawing.Point(600, 292);
-            this.sortUserdescbtn.Name = "sortUserdescbtn";
-            this.sortUserdescbtn.Size = new System.Drawing.Size(120, 33);
-            this.sortUserdescbtn.TabIndex = 3;
-            this.sortUserdescbtn.Text = "Sort: Desc";
-            this.sortUserdescbtn.UseVisualStyleBackColor = true;
+            this.ctlAwards.AllowUserToAddRows = false;
+            this.ctlAwards.AllowUserToDeleteRows = false;
+            this.ctlAwards.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ctlAwards.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ctlAwards.Location = new System.Drawing.Point(3, 3);
+            this.ctlAwards.Name = "ctlAwards";
+            this.ctlAwards.ReadOnly = true;
+            this.ctlAwards.RowHeadersWidth = 51;
+            this.ctlAwards.RowTemplate.Height = 29;
+            this.ctlAwards.Size = new System.Drawing.Size(734, 277);
+            this.ctlAwards.TabIndex = 0;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(772, 430);
+            this.ClientSize = new System.Drawing.Size(778, 428);
             this.Controls.Add(this.ctlTab);
             this.Controls.Add(this.mainMenu);
             this.MainMenuStrip = this.mainMenu;
@@ -227,7 +245,6 @@ namespace WinFormsApp
 
         private System.Windows.Forms.MenuStrip mainMenu;
         private System.Windows.Forms.ToolStripMenuItem ctlFile;
-        private System.Windows.Forms.ToolStripMenuItem ctlAbout;
         private System.Windows.Forms.ToolStripMenuItem ctlFileRegister;
         private System.Windows.Forms.ToolStripMenuItem ctlFileEdit;
         private System.Windows.Forms.ToolStripMenuItem ctlFileRemove;

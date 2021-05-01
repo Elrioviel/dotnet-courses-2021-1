@@ -6,6 +6,9 @@ namespace Department.DAL
     public interface IAwardDAO
     {
         void Add(Entities.Awards award);
+        void Remove(Entities.Awards award);
         IEnumerable<Entities.Awards> GetList();
+        System.Collections.Generic.IEnumerable<Entities.Awards> SortAwardsByTitleAsc();
+        System.Collections.Generic.IEnumerable<Entities.Awards> SortAwardsByTitleDesc();
     }
 }

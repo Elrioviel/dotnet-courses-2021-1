@@ -57,54 +57,30 @@ namespace WinFormsApp
 
         private void AddUserbtn_Click(object sender, EventArgs e)
         {
-            if (this.ValidateChildren() == true)
+            if (firstNametxt.Text == "" | lastNametxt.Text == "")
+            {
+                MessageBox.Show("Fields empty!");
+            }
+            else
             {
                 this.DialogResult = DialogResult.OK;
             }
-            else
-            {
-                this.DialogResult = DialogResult.None;
-            }
         }
 
-        private void FirstNametxt_Validating(object sender, CancelEventArgs e)
-        {
-            string input = firstNametxt.Text;
-            if (String.IsNullOrEmpty(input) == true)
-            {
-                errorProvider.SetError(firstNametxt, "Invalid data entries!");
-                e.Cancel = true;
-            }
-            else
-            {
-                errorProvider.SetError(firstNametxt, String.Empty);
-                e.Cancel = false;
-            }
-        }
-
-        private void LastNametxt_Validating(object sender, CancelEventArgs e)
-        {
-            string input = lastNametxt.Text;
-            if (String.IsNullOrEmpty(input) == true)
-            {
-                errorProvider.SetError(lastNametxt, "invalid data entries!");
-                e.Cancel = true;
-            }
-            else
-            {
-                errorProvider.SetError(lastNametxt, String.Empty);
-                e.Cancel = false;
-            }
-        }
 
         private void FirstNametxt_Validated(object sender, EventArgs e)
         {
-            _firstName = firstNametxt.Text.Trim();
+            _firstName = firstNametxt.Text;
         }
 
         private void LastNametxt_Validated(object sender, EventArgs e)
         {
-            _lastName = lastNametxt.Text.Trim();
+            _lastName = lastNametxt.Text;
+        }
+
+        private void birthDatepicker_Validated(object sender, EventArgs e)
+        {
+            _birthDate = birthDatepicker.Value;
         }
     }
 }

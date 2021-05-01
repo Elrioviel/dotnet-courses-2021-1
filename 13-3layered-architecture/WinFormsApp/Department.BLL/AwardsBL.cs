@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using Entities;
 using Department.DAL;
+using System.Collections;
 
 namespace Department.BLL
 {
-    public class AwardsBL
+    public class AwardsBL : IAwardsBL
     {
         private readonly IAwardDAO awardsDAO;
         public static int idAward = 0;
-        public AwardsBL()
+        public AwardsBL(IAwardDAO awardDAO)
         {
-            awardsDAO = new AwardDAO();
+            awardsDAO = awardDAO;
         }
         public IEnumerable<Awards> GetList()
         {
@@ -40,15 +41,11 @@ namespace Department.BLL
         }
         public IEnumerable<Awards> SortAwardByTitleAsc()
         {
-            return (from a in GetList()
-                    orderby a.Title ascending
-                    select a);
+            return awardsDAO.SortAwardsByTitleAsc();
         }
         public IEnumerable<Awards> SortAwardsByTitleDesc()
         {
-            return (from a in GetList()
-                    orderby a.Title descending
-                    select a);
+            return awardsDAO.SortAwardsByTitleDesc();
         }
         public void Add(string title, string description)
         {
@@ -61,5 +58,20 @@ namespace Department.BLL
             idAward++;
             this.Add(award);
         }
+        public IEnumerator<Awards> GetEnumerator()
+        {
+            List<Awards> myList = awardsDAO.GetList().ToList();
+            for (int i = 0; i < myList.Count; i++)
+            {
+                yield return myList[i];
+
+            }
+        }
+        public void Remove(Awards award)
+        {
+            awardsDAO.Remove(award);
+        }
+
+
     }
 }

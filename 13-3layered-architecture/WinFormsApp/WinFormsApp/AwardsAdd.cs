@@ -50,28 +50,13 @@ namespace WinFormsApp
 
         private void SaveAwardbtn_Click(object sender, EventArgs e)
         {
-            if (this.ValidateChildren() == true)
+            if (awardTitletxt.Text == "")
+            {
+                MessageBox.Show("Award must have a title!");
+            }
+            else
             {
                 this.DialogResult = DialogResult.OK;
-            }
-            else
-            {
-                this.DialogResult = DialogResult.None;
-            }
-        }
-
-        private void AwardTitletxt_Validating(object sender, CancelEventArgs e)
-        {
-            string input = awardTitletxt.Text.Trim();
-            if (String.IsNullOrEmpty(input) == true)
-            {
-                errorProvider.SetError(awardTitletxt, "Invalid data entries!");
-                e.Cancel = true;
-            }
-            else
-            {
-                errorProvider.SetError(awardTitletxt, String.Empty);
-                e.Cancel = false;
             }
         }
 
@@ -80,24 +65,11 @@ namespace WinFormsApp
             _awardTitle = awardTitletxt.Text.Trim();
         }
 
-        private void AwardsDescriptiontxt_Validating(object sender, CancelEventArgs e)
-        {
-            string input = awardsDescriptiontxt.Text.Trim();
-            if (String.IsNullOrEmpty(input) == true)
-            {
-                errorProvider.SetError(awardsDescriptiontxt, "Invalid data entries!");
-                e.Cancel = true;
-            }
-            else
-            {
-                errorProvider.SetError(awardsDescriptiontxt, String.Empty);
-                e.Cancel = false;
-            }
-        }
 
         private void AwardsDescriptiontxt_Validated(object sender, EventArgs e)
         {
             _awardDescription = awardsDescriptiontxt.Text.Trim();
         }
+
     }
 }

@@ -38,8 +38,6 @@ namespace WinFormsApp
             this.saveUserbtn = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.awardListCheckbox = new System.Windows.Forms.CheckedListBox();
-            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -74,22 +72,18 @@ namespace WinFormsApp
             // 
             // editFirstNametxt
             // 
-            this.errorProvider.SetIconPadding(this.editFirstNametxt, 2);
             this.editFirstNametxt.Location = new System.Drawing.Point(261, 36);
             this.editFirstNametxt.Name = "editFirstNametxt";
             this.editFirstNametxt.Size = new System.Drawing.Size(274, 27);
             this.editFirstNametxt.TabIndex = 3;
-            this.editFirstNametxt.Validating += new System.ComponentModel.CancelEventHandler(this.EditFirstNametxt_Validating);
             this.editFirstNametxt.Validated += new System.EventHandler(this.EditFirstNametxt_Validated);
             // 
             // editLastNametxt
             // 
-            this.errorProvider.SetIconPadding(this.editLastNametxt, 2);
             this.editLastNametxt.Location = new System.Drawing.Point(261, 127);
             this.editLastNametxt.Name = "editLastNametxt";
             this.editLastNametxt.Size = new System.Drawing.Size(274, 27);
             this.editLastNametxt.TabIndex = 4;
-            this.editLastNametxt.Validating += new System.ComponentModel.CancelEventHandler(this.EditLastNametxt_Validating);
             this.editLastNametxt.Validated += new System.EventHandler(this.EditLastNametxt_Validated);
             // 
             // editBirthDatepicker
@@ -104,6 +98,7 @@ namespace WinFormsApp
             // 
             // saveUserbtn
             // 
+            this.saveUserbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.saveUserbtn.Location = new System.Drawing.Point(407, 429);
             this.saveUserbtn.Name = "saveUserbtn";
             this.saveUserbtn.Size = new System.Drawing.Size(169, 49);
@@ -129,11 +124,6 @@ namespace WinFormsApp
             this.awardListCheckbox.Name = "awardListCheckbox";
             this.awardListCheckbox.Size = new System.Drawing.Size(274, 26);
             this.awardListCheckbox.TabIndex = 8;
-            //
-            // errorProvider
-            //
-            this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
-            this.errorProvider.ContainerControl = this;
             // 
             // UserEdit
             // 
@@ -152,7 +142,6 @@ namespace WinFormsApp
             this.Name = "UserEdit";
             this.Text = "UserEdit";
             this.Load += new System.EventHandler(this.UserEdit_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,7 +157,7 @@ namespace WinFormsApp
         private System.Windows.Forms.DateTimePicker editBirthDatepicker;
         private System.Windows.Forms.Button saveUserbtn;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckedListBox awardListCheckbox;
-        private System.Windows.Forms.ErrorProvider errorProvider;
+        public System.Windows.Forms.CheckedListBox awardListCheckbox;
+        //private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

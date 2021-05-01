@@ -76,7 +76,6 @@ namespace WinFormsApp
             this.firstNametxt.Name = "firstNametxt";
             this.firstNametxt.Size = new System.Drawing.Size(269, 27);
             this.firstNametxt.TabIndex = 3;
-            this.firstNametxt.Validating += new System.ComponentModel.CancelEventHandler(this.FirstNametxt_Validating);
             this.firstNametxt.Validated += new System.EventHandler(this.FirstNametxt_Validated);
             // 
             // lastNametxt
@@ -85,7 +84,6 @@ namespace WinFormsApp
             this.lastNametxt.Name = "lastNametxt";
             this.lastNametxt.Size = new System.Drawing.Size(269, 27);
             this.lastNametxt.TabIndex = 4;
-            this.lastNametxt.Validating += new System.ComponentModel.CancelEventHandler(this.LastNametxt_Validating);
             this.lastNametxt.Validated += new System.EventHandler(this.LastNametxt_Validated);
             // 
             // birthDatepicker
@@ -97,9 +95,11 @@ namespace WinFormsApp
             this.birthDatepicker.Size = new System.Drawing.Size(269, 27);
             this.birthDatepicker.TabIndex = 5;
             this.birthDatepicker.Value = new System.DateTime(2003, 12, 31, 0, 0, 0, 0);
+            this.birthDatepicker.Validated += new System.EventHandler(this.birthDatepicker_Validated);
             // 
             // addUserbtn
             // 
+            this.addUserbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.addUserbtn.Location = new System.Drawing.Point(354, 386);
             this.addUserbtn.Name = "addUserbtn";
             this.addUserbtn.Size = new System.Drawing.Size(150, 50);
