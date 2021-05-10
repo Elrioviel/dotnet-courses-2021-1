@@ -97,6 +97,7 @@ namespace Department.DAL
             {
                 connection.Open();
                 command = new OleDbCommand($"DELETE FROM [dbo].[UserAward] WHERE Users_Id = {ID}", connection);
+                command.ExecuteNonQuery();
                 command = new OleDbCommand($"DELETE FROM [dbo].[User] WHERE UserID = {ID}", connection);
                 command.ExecuteNonQuery();
                 connection.Close();

@@ -67,6 +67,11 @@ namespace Department.DAL
                 connection.Close();
             }
         }
+        //public void UpdateAward(int Award_ID, string Award_Title)
+        //{
+        //    ConnectionState.Open();
+        //    command = new OleDbCommand($"UPDATE [dbo].[UserAward] SET Awards.AwardID=")
+        //}
 
     }
 }

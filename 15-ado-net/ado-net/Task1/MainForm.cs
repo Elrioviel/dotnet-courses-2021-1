@@ -46,17 +46,20 @@ namespace Task1
         private void DisplayAwards()
         {
             ctlAwards.DataSource = null;
-            ctlAwards.DataSource = awardsSource;
+            ctlAwards.DataSource = awards.GetList();
+            awardsSource.ResetBindings(false);
         }
         private void DisplayUsers()
         {
             ctlUsers.DataSource = null;
             ctlUsers.DataSource = users.GetList();
+            usersSource.ResetBindings(false);
         }
         private void DisplayUsersAwards()
         {
             ctlAwardsUser.DataSource = null;
             ctlAwardsUser.DataSource = userAwardsBL.GetList();
+            userAwardsSource.ResetBindings(false);
         }
         private void FileRegister_Click(object sender, EventArgs e)
         {
@@ -75,7 +78,9 @@ namespace Task1
             UserAdd addUser = new UserAdd();
             if (addUser.ShowDialog(this) == DialogResult.OK)
             {
+                usersSource.ResetBindings(true);
                 users.Add(addUser.FirstName, addUser.LastName, addUser.BirthDate);
+                usersSource.ResetBindings(false);
                 DisplayUsers();
             }
         }
@@ -84,7 +89,9 @@ namespace Task1
             AddAward addAward = new AddAward();
             if (addAward.ShowDialog(this) == DialogResult.OK)
             {
+                awardsSource.ResetBindings(true);
                 awards.Add(addAward.AwardTitle, addAward.AwardDescription);
+                awardsSource.ResetBindings(false);
                 DisplayAwards();
             }
         }
@@ -110,23 +117,30 @@ namespace Task1
         private void EditCurrentAward()
         {
             Awards award = awardsSource.Current as Awards;
-            User user = usersSource.Current as User;
+            
 
             AddAward editedAward = new AddAward(award);
             if (editedAward.ShowDialog() == DialogResult.OK)
             {
-                awardsSource.ResetBindings(true);
-                user.AwardsUser.Remove(award);
-                user.AddAward(editedAward.AwardTitle, editedAward.AwardDescription);
-
+                
                 int currentID = award.AwardID;
+                string currentTitle = award.Title;
+                var item = userAwardsBL.GetList().FirstOrDefault(o => o.Award_Title == currentTitle);
+
                 awards.Remove(currentID);
                 awardsSource.DataSource = awards.GetList();
                 awardsSource.ResetBindings(true);
                 awards.Add(editedAward.AwardTitle, editedAward.AwardDescription);
                 awardsSource.ResetBindings(false);
-                usersSource.ResetBindings(false);
+                DisplayAwards();
+                var updatedAward = awards.GetList().FirstOrDefault(o => o.Title == editedAward.AwardTitle);
                 MessageBox.Show("Awards updated for users!");
+                userAwardsSource.ResetBindings(true);
+                var userWithAward = item.User_ID;
+                userAwardsBL.Add(item.User_ID, currentID+1);
+                DisplayUsersAwards();
+                userAwardsSource.ResetBindings(false);
+
             }
         }
         private void FileEdit_Click(object sender, EventArgs e)
