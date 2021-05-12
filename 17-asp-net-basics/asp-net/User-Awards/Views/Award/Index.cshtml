@@ -1,0 +1,52 @@
+﻿@model IEnumerable<User_Awards.Models.Award>
+
+<div class=" container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Awards' List</h2>
+        </div>
+        <div class=" col-6 text-right">
+            <a asp-controller="Award" asp-action="CreateUser" class="btn btn-primary">Add a new Award</a>
+        </div>
+    </div>
+    <br />
+
+
+    @if(Model.Count() > 0)
+            {
+                <table class="table table-bordered table-striped" style="width:100%">
+                    <thead>
+                        <th>
+                            User ID
+                        </th>
+                        <th>
+                            Title
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                    </thead>
+                    <tbody>
+                        @foreach(var award in Model)
+                {
+                        <tr>
+                            <td width="10%">@award.AwardID</td>
+                            <td width="30%">@award.AwardTitle</td>
+                            <td width="30%">@award.AwardDescription</td>
+                            <td width="30%">
+                                <div class=" w-100 btn-group"role="group">
+                                    <a asp-controller="Award" asp-action="Update" asp-route-AwardID="@award.AwardID" class="btn btn-primary mx-1">Update</a>
+                                    <a asp-controller="Award" asp-action="Delete" asp-route-AwardID="@award.AwardID" class="btn btn-danger mx-1">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                }
+                    </tbody>
+                </table>
+    }
+    else
+            {
+                <p>No awards created yet</p>
+            }
+</div>
+
